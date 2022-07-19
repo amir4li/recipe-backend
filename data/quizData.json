@@ -1,0 +1,170 @@
+[
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "When was &quot;YouTube&quot; founded?",
+    "correct_answer": "February 14, 2005",
+    "incorrect_answers": [
+    "May 22, 2004",
+    "September 12, 2005",
+    "July 19, 2009"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "Which of the following is not another name for the eggplant?",
+    "correct_answer": "Potimarron",
+    "incorrect_answers": [
+    "Brinjal",
+    "Guinea Squash",
+    "Melongene"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "Which of the following chemicals are found in eggplant seeds?",
+    "correct_answer": "Nicotine",
+    "incorrect_answers": [
+    "Mescaline",
+    "Cyanide",
+    "Psilocybin"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "According to Fair Works Australia, how long do you have to work to get Long Service Leave?",
+    "correct_answer": "7 years",
+    "incorrect_answers": [
+    "2 years",
+    "8 years",
+    "6 months"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "What was Bank of America originally established as?",
+    "correct_answer": "Bank of Italy",
+    "incorrect_answers": [
+    "Bank of Long Island",
+    "Bank of Pennsylvania",
+    "Bank of Charlotte"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "Who founded the Khan Academy?",
+    "correct_answer": "Sal Khan",
+    "incorrect_answers": [
+    "Ben Khan",
+    "Kitt Khan",
+    "Adel Khan"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "Named after the mallow flower, mauve is a shade of what?",
+    "correct_answer": "Purple",
+    "incorrect_answers": [
+    "Red",
+    "Brown",
+    "Pink"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "Originally another word for poppy, coquelicot is a shade of what?",
+    "correct_answer": "Red",
+    "incorrect_answers": [
+    "Green",
+    "Blue",
+    "Pink"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "Nephelococcygia is the practice of doing what?",
+    "correct_answer": "Finding shapes in clouds",
+    "incorrect_answers": [
+    "Sleeping with your eyes open",
+    "Breaking glass with your voice",
+    "Swimming in freezing water"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "The Quadrangularis Reversum is best described as which of the following?",
+    "correct_answer": "A percussion instrument",
+    "incorrect_answers": [
+    "A building in Oxford University",
+    "A chess move",
+    "A geometric theorem"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "Located in Chile, El Teniente is the world&#039;s largest underground mine for what metal?",
+    "correct_answer": "Copper",
+    "incorrect_answers": [
+    "Iron",
+    "Nickel",
+    "Silver"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "What is the most commonly used noun in the English language?",
+    "correct_answer": "Time",
+    "incorrect_answers": [
+    "Home",
+    "Water",
+    "Man"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "The word &quot;astasia&quot; means which of the following?",
+    "correct_answer": "The inability to stand up",
+    "incorrect_answers": [
+    "The inability to make decisions",
+    "The inability to concentrate on anything",
+    "A feverish desire to rip one&#039;s clothes off"
+    ]
+    },
+    {
+    "category": "General Knowledge",
+    "type": "multiple",
+    "difficulty": "hard",
+    "question": "Which of these cities does NOT have a United States Minting location?",
+    "correct_answer": "St. Louis, MO",
+    "incorrect_answers": [
+    "San Fransisco, CA",
+    "Philidelphia, PA",
+    "West Point, NY"
+    ]
+    }
+    ]
