@@ -1,2 +1,2 @@
-# Quiz-App
+# Quiz-API
 Backend-Project

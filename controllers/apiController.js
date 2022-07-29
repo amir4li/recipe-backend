@@ -1,10 +1,8 @@
-const { query } = require("express");
 const Quiz = require("../models/apiModel");
 
 exports.getAllQuiz = async (req, res)=> {
     try {
         // BUILD QUERY
-
         const query = Quiz.find(req.query).limit(req.query.amount);
 
         // EXECUTE QUERY
