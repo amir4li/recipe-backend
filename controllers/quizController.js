@@ -1,111 +1,97 @@
-const Quiz = require("../models/quizModel");
-
-exports.getAllQuiz = async (req, res)=> {
-    try {
-        // BUILD QUERY
-        const query = Quiz.find(req.query).limit(req.query.amount);
-
-        // EXECUTE QUERY
-        const quizzes = await query;
-
-        // SEND RESPONSE
-        console.log("Data sent successfully");
-        res.status(200).json({
-            status: "success",           
-            results: quizzes.length,
-            data: {
-                quizzes
-            }
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: "fail",
-            message: err
-        });
-    }
-};
+const Quiz = require("../models/QuizModel");
+const asyncHandler = require("../middlewares/asyncMiddleware");
+const ErrorResponse = require("../utils/errorResponse");
 
 
-exports.createQuiz = async (req, res)=> {
-    try {
-        const newQuiz = await Quiz.create(req.body);
+// @desc      Get all quizzes
+// @route     GET /api/v1/quizzes
+// @access    Public
+exports.getAllQuiz = asyncHandler(async (req, res)=> {
+    // BUILD QUERY
+    const query = Quiz.find(req.query).limit(req.query.amount);
 
-        res.status(201).json({
-            status: "success",
-            data: {
-                quiz: newQuiz
-            }
-        });
+    // EXECUTE QUERY
+    const quizzes = await query;
 
-    } catch (err) {
-        res.status(400).json({
-            status: "fail",
-            message: "Invalid data send!"
-        });
+    // SEND RESPONSE
+    console.log("Data sent successfully");
+    res.status(200).json({
+        status: "success",           
+        results: quizzes.length,
+        data: quizzes
+    });
+});
+
+
+// @desc      Get single quiz
+// @route     GET /api/v1/quizzes/:id
+// @access    Public
+exports.getQuiz = asyncHandler(async (req, res, next)=> {
+    const quiz = await Quiz.findById(req.params.id);
+
+    if (!quiz) {
+        return next(new ErrorResponse(`Quiz not found with id of ${req.params.id}`, 404));
     };
-};
+
+    res.status(200).json({
+        status: "success",
+        data: quiz
+    });
+});
 
 
-exports.getQuiz = async (req, res)=> {
-    try {
-        const quiz = await Quiz.findById(req.params.id);
+// @desc      Create new quiz
+// @route     POST /api/v1/quizzes/:id
+// @access    Private
+exports.createQuiz = asyncHandler(async (req, res)=> {
+    const newQuiz = await Quiz.create(req.body);
 
-        console.log("Data sent successfully");
+    res.status(201).json({
+        status: "success",
+        msg: "New Quiz has been created",
+        data: newQuiz
+    });
+});
 
-        res.status(200).json({
-            status: "success",
-            data: {
-                quiz
-            }
-        });
-    } catch (err) {
-        res.status(404).json({
-            status: "fail",
-            message: err
-        });
+
+// @desc      Update quiz
+// @route     PUT /api/v1/quizzes/:id
+// @access    Private
+exports.updateQuiz = asyncHandler(async (req, res, next)=> {
+    let quiz = await Quiz.findById(req.params.id);
+
+    if (!quiz) {
+        return next(new ErrorResponse(`Quiz not found with id of ${req.params.id}`, 404));
     };
-};
+
+    quiz = await Quiz.findOneAndUpdate(req.params.id, req.body, {
+        new: true,
+        runValidators: true
+    });
+
+    res.status(200).json({
+        status: "success",
+        msq: `Update quiz ${req.params.id}`,
+        data: quiz
+    });
+});
 
 
-exports.updateQuiz = async (req, res)=> {
-    try {
-        const quiz = Quiz.findByIdAndUpdate(req.params.id, req.body, {
-            new: true,
-            runValidators: true
-        });
+// @desc      Delete quiz
+// @route     DELETE /api/v1/quizzes/:id
+// @access    Private
+exports.deleteQuiz = asyncHandler(async (req, res, next)=> {
+    let quiz = await Quiz.findById(req.params.id);
 
-        console.log("Data updated successfully");
-
-        res.status(200).json({
-            status: "success",
-            data: {
-                quiz
-            }
-        });
-    } catch (err) {
-        res.status(400).json({
-            status: "fail",
-            message: err
-        });
+    if (!quiz) {
+        return next(new ErrorResponse(`Quiz not found with id of ${req.params.id}`, 404));
     };
-};
 
+    quiz.remove();
 
-exports.deleteQuiz = async (req, res)=> {
-    try {
-        await Quiz.findByIdAndDelete(req.params.id);
-
-        console.log("Data deleted successfully");
-
-        res.status(204).json({
-            status: "success",
-            data: null
-        });
-    } catch (err) {
-        res.status(400).json({
-            status: "fail",
-            message: err
-        });
-    };
-};
+    res.status(204).json({
+        status: "success",
+        data: {}
+    });
+});
 

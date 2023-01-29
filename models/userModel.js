@@ -1,7 +1,9 @@
 const mongoose = require("mongoose");
-const mongoose = require("validator");
+const bcrypt = require("bcryptjs");
+const JWT = require("jsonwebtoken");
+const validator = require("validator");
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
     name: {
         type: String,
         required: [true, "Please provide a name."]
@@ -10,47 +12,52 @@ const userSchema = new mongoose.Schema({
         type: String,
         required: [true, "Please provide an email."],
         unique: true,
-        lowercase: true,
-        validate: [validator.isEmail, "Please provide a valid email."]
+        validate: [validator.isEmail, "Please provide a vlid email"]
     },
-    photo: String,
+    role: {
+        type: String,
+        enum: ["user"],
+        default: "user"
+    },
     password: {
         type: String,
         required: [true, "Please provide a password."],
         minlength: 8,
         select: false
     },
-    passwordConfirm: {
-        type: String,
-        required: [true, "Please confirm your password."],
-        validate: {
-            // THIS ONLY WORKS ON SAVE !!!
-            validator: function(el) {
-                return el === this.password;
-            },
-            message: "Passwords are not the same."
-        }
+    createdAt: {
+        type: Date,
+        default: Date.now
     }
 });
 
 
-// MONGOOSE MIDDLEWARE TO HASH PASSWORD BEFORE SAVING IT TO DB
-userSchema.pre("save", async function(next) {
-
+// Hashing password befor saving it to DB
+UserSchema.pre("save", async function(next) {
     if (!this.isModified("password")) {
         return next();
     };
 
-    // HASHING PASSWORD WITH COST OF 12
-    this.password = await bcrypt.hash(this.password, 12);
-
-    // DELETE passwordConfirm FIELD. WE DON'T NEED THIS IN THE DB.
-    this.passwordConfirm = undefined;
+    const salt = await bcrypt.genSalt(10);
+    this.password = await bcrypt.hash(this.password, salt);
     
     next();
 });
 
-const User = mongoose.model("User", userSchema);
+// Sign JWT and return
+UserSchema.methods.getSignedJwtToken = function() {
+    return JWT.sign({ id: this._id }, process.env.JWT_SECRET, {
+        expiresIn: process.env.JWT_EXPIRE
+    });
+};
 
+// Match entered password to hashed password in database
+UserSchema.methods.matchPassword = async function(enteredPassword) {
+    return await bcrypt.compare(enteredPassword, this.password);
+};
+
+
+const User = mongoose.model("User", UserSchema);
 module.exports = User;
+
 
