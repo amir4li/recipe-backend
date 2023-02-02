@@ -1,12 +1,12 @@
 {
   "name": "recipe-backend",
   "version": "1.0.0",
-  "description": "A full stack quiz web app.",
-  "main": "app.js",
+  "description": "",
+  "main": "server.js",
   "scripts": {
     "start": "node server.js",
-    "dev": "nodemon server",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon server.js"
   },
   "repository": {
     "type": "git",
@@ -14,10 +14,7 @@
   },
   "author": "Amir Ali",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/amir4li/recipe-backend/issues"
-  },
-  "homepage": "https://github.com/amir4li/recipe-backend#readme",
+
   "dependencies": {
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
