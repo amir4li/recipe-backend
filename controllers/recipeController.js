@@ -1,4 +1,4 @@
-const Recipe = require("../models/RecipeModel");
+const Recipe = require("../models/recipeModel");
 const asyncHandler = require("../middlewares/asyncMiddleware");
 const ErrorResponse = require("../utils/errorResponse");
 
