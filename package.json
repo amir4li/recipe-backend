@@ -1,5 +1,5 @@
 {
-  "name": "quiz-app",
+  "name": "recipe-backend",
   "version": "1.0.0",
   "description": "A full stack quiz web app.",
   "main": "app.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Amir-Ali-au28/Quiz-App.git"
+    "url": "https://github.com/amir4li/recipe-backend.git"
   },
   "author": "Amir Ali",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Amir-Ali-au28/Quiz-App/issues"
+    "url": "https://github.com/amir4li/recipe-backend/issues"
   },
-  "homepage": "https://github.com/Amir-Ali-au28/Quiz-App#readme",
+  "homepage": "https://github.com/amir4li/recipe-backend#readme",
   "dependencies": {
     "axios": "^0.27.2",
     "bcrypt": "^5.0.1",
