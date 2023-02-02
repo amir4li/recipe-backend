@@ -23,6 +23,7 @@ exports.protect = asyncHandler(async (req, res, next)=> {
         const decoded = JWT.verify(token, process.env.JWT_SECRET);
 
         req.user = await User.findById(decoded.id);
+ 
         next();
     } catch (err) {
         console.log(err);

@@ -1,7 +1,7 @@
 const dotenv = require('dotenv');
 const mongoose = require("mongoose");
 const fs = require("fs");
-const Quiz = require("./models/QuizModel");
+const Recipe = require("./models/RecipeModel");
 
 dotenv.config({ path: './config/config.env' });
 
@@ -16,13 +16,13 @@ mongoose.connect(DB, {
 
 
 // Read json file
-const quizzes = JSON.parse(fs.readFileSync(`${__dirname}/_data/quizData.json`, "utf-8"));
+const recipes = JSON.parse(fs.readFileSync(`${__dirname}/_data/recipeData.json`, "utf-8"));
 
 // Import data into db
 const importData = async ()=> {
     try {
-        await Quiz.create(quizzes);
-        console.log("Data successfully loaded...");
+        await Recipe.create(recipes);
+        console.log("Data imported successfully...");
         process.exit();
     } catch (err) {
         console.log(err);
@@ -32,7 +32,7 @@ const importData = async ()=> {
 // Delete data
 const deleteData = async ()=> {
     try {
-        await Quiz.deleteMany();
+        await Recipe.deleteMany();
         console.log("Data Destroyed...");
         process.exit();
     } catch (err) {

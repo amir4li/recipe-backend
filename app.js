@@ -7,32 +7,26 @@ const xss = require("xss-clean");
 const rateLimit = require("express-rate-limit");
 const hpp = require("hpp");
 const cookieParser = require("cookie-parser");
+
 const errorHandler = require("./middlewares/errorMiddleware");
-const quizRouter = require("./routes/quizRoutes");
+const recipeRouter = require("./routes/recipeRoutes");
 const authRouter = require("./routes/authRoutes");
+
 
 const app = express();
 app.use(express.json());
-
-// Cookie parser
-app.use(cookieParser());
 
 // Dev logging middleware
 if (process.env.NODE_ENV === "development") {
     app.use(morgan("dev"));
 };
 
-// Enable cors
-app.use(cors());
-
-// Sanitize data
-app.use(mongoSanitize());
-
-// Set security headers
-app.use(helmet());
-
-// Prevent xss attacks
-app.use(xss());
+app.use(cookieParser());   // Cookie parser
+app.use(cors());           // Enable cors
+app.use(mongoSanitize());  // Sanitize data
+app.use(helmet());         // Set security headers
+app.use(xss());            // Prevent xss attacks
+app.use(hpp());            // prevent http param polution
 
 // Rate limiting
 const limiter = rateLimit({
@@ -41,12 +35,9 @@ const limiter = rateLimit({
 });
 app.use(limiter);
 
-// prevent http param polution
-app.use(hpp());
-
 
 // Routes
-app.use("/api/v1/quizzes", quizRouter);
+app.use("/api/v1/recipes", recipeRouter);
 app.use("/api/v1/auth", authRouter);
 
 // Error handling middleware
